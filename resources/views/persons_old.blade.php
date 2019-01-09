@@ -1,49 +1,25 @@
-@extends('index2')
+@extends('index3')
+
 @section('content')
 
-<style>
-.charity_icon{
-    width: 28px;
-    height: 30px;
-    left: 0;
-    margin-left: 0;
-    position: absolute;
-    color: white;
-    top: 0;
-    left: 0;
-    margin-left: -8%;
-    background: #128282;
-    border-radius: 10px 0 0 10px;
-    cursor: pointer;
-}
-@media(max-width: 575px)
-{
-  .charity{
-    margin-left: 50%;
-  }
-  .charity_icon{
-    margin-left: -13px;
-  }
-}
-
-</style>
 <div style="background: #ccc;margin-top:60px;min-height:474px;">
 
-
-<div class="row">
-  <!--*****************Start Chating****************-->
-    <div class="col-md-2 col-sm-12 col-xs-12 hidden-xs" style="background:white;min-height:500px; padding:0;">
-      <div class="col-sm-12 text-center" style="background:#128282;height:50%;padding:0;padding-top:7px;color:white" dir='rtl'> الشات
-        <p style="background:white;padding:0;height:100%">
-
-        </p>
-      </div>
-    </div>
-
 <!--*************Start Posts******************************-->
-  <div class='col-md-8 col-sm-9 col-xs-12 div1'>
+<div class="row">
+
+  <div class="col-md-2 col-sm-12 col-xs-12" style="background:white;min-height:500px; padding:0;">
+    <div class="col-sm-12 text-center" style="background:#128282;height:50%;padding:0;padding-top:7px;color:white" dir='rtl'> الشات
+      <p style="background:white;padding:0;height:100%">
+
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-1 hidden-xs"> </div>
+
+  <div class='col-md-6 col-sm-12 col-xs-12 div1' style="margin-top: 10px;">
     <setion class="post">
-      <div class="panel panel-default" style="margin-top:27px;">
+      <div class="panel panel-default">
         <div class="panel-body">
             <i class="fa fa-chevron-down" aria-hidden="true" href="#myModal" type="" data-id="PostId" data-toggle="modal"></i>
 
@@ -68,7 +44,58 @@
          <img src="{{ url("/design/images/3.jpeg") }}" class="img-responsive display-inline pull-right post_img" style="width:95%;height:200px;margin-bottom:20px;margin-right:15px;">
         </div>
 
-        <div class='row' style="margin-bottom:-2%;">
+        <div class='row' style="margin-bottom:-4%;">
+          <div class='col-sm-3  hidden-xs'><span class="pull-right">5000</span></div>
+
+          <div class='col-sm-6 col-xs-12'>
+          <div class="progress">
+           <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%;">73%</div>
+          </div>
+         </div>
+
+        <div class='col-sm-3 hidden-xs span2'><span>1000</span></div>
+
+        </div>
+       </div>
+       <div class='panel-footer'>
+         <div class="row">
+          <div class='col-sm-9 col-xs-2'>
+           <div class='btn btn-default share' id=""><span>مشاركة</span> <i class="fa fa-share " aria-hidden="true"></i></div>
+          </div>
+          <div class='col-sm-3  col-xs-2'>
+            <span class='btn btn-default pull-right donation' aria-hidden="true" href="#myModal2" data-id="" data-toggle="modal"> تبرع</span>
+          </div>
+        </div>
+      </div>
+     </div>
+  </section>
+   <setion class="post">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <i class="fa fa-chevron-down" aria-hidden="true" href="#myModal" type="" data-id="PostId" data-toggle="modal"></i>
+
+          <div class="head">
+           <div class='row' dir='rtl'>
+             <div class='col-sm-3 col-xs-4'>
+              <img src="{{ url("/design/images/2.gif") }}" class="img-responsive display-inline pull-right" style="max-width:80px;max-height:80px;border-radius:50%;">
+             </div>
+             <div class='col-sm-5 col-xs-5'>
+               <span class="name pull-right">اسم الجمعيه بالكامل </span>
+             </div>
+            <div class='col-sm-2 col-sm-offset-1 col-xs-1'>
+             <span class='date pull-left'> التاريخ </span>
+            </div>
+           </div>
+         </div>
+         <br>
+         <div class='row' dir="rtl" style='min-height: 60px;'>
+           <div class='col-sm-9 col-xs-12'>
+              <p class='lead pull-right'>البوست</p>
+          </div>
+         <img src="{{ url("/design/images/3.jpeg") }}" class="img-responsive display-inline pull-right post_img" style="width:95%;height:200px;margin-bottom:20px;margin-right:15px;">
+        </div>
+
+        <div class='row' style="margin-bottom:-4%;">
           <div class='col-sm-3  hidden-xs'><span class="pull-right">5000</span></div>
 
           <div class='col-sm-6 col-xs-12'>
@@ -94,17 +121,19 @@
      </div>
   </section>
   </div>
-      <!--************************End Post**********************-->
-      <!--*****************Start Charities****************-->
-       <div class="col-md-2 col-sm-3 col-xs-6  charity" style="background:white;min-height:500px; padding:0;">
-         <div class="col-sm-12 text-center" style="background:#128282;height:50%;padding:0;padding-top:7px;color:white;position: relative"> الجمعيات
-          <div class='charity_icon hidden-lg hidden-md'><i class='fa fa-angle-left' style='font-weight: bold;font-size: 27px'></i></div>
-           <p style="background:white;padding:0;height:100%">
 
-           </p>
-         </div>
+    <div class="col-md-1 hidden-xs"> </div>
 
-       </div>
+  <!--************************End Post**********************-->
+
+
+  <div class="col-md-2 col-sm-12 col-xs-12" style="background:white;min-height:500px; padding:0;">
+    <div class="col-sm-12 text-center" style="background:#128282;height:50%;padding:0;padding-top:7px;color:white"> الجمعيات
+      <p style="background:white;padding:0;height:100%">
+
+      </p>
+    </div>
+  </div>
 
 
   </div>
@@ -194,22 +223,5 @@
 
 
 
-      <script src="{{ url("/design/colo/js/jquery-3.2.1.min.js") }}"></script>
-      <script>
-      $(document).ready(function(){
 
-        $(".charity_icon").on('click',function(e){
-        //$(".charity").toggleClass('right');
-
-          $(this).css('display','block');
-          $(".charity").css({
-            'right': -$('.charity').width()+15,
-            //'top':-screen.height + $('.charity').height(),
-            'z-index':'2'
-          });
-
-
-      })
-    })
-      </script>
 @endsection

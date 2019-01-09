@@ -33,13 +33,18 @@
 	<link rel="stylesheet" href="{{ url("/design/lte/plugins/daterangepicker/daterangepicker-bs3.css") }}">
 	<link rel="stylesheet" href="{{ url("/design/lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css") }}">
 
+	<!-- Added By Hawaa -->
+		<link rel="stylesheet" href="{{ url("/design/colo/css/core-style.css") }}">
+
+
+
 	<script>
 		function test()
 		{
 			alert("search") ;
 		}
 	</script>
-    
+
 
 </head>
 
@@ -68,7 +73,7 @@
 							<ul class="navbar_menu">
 								<li>
 									<i onclick="test()" class="fa fa-search" style="right:160px;cursor: pointer"></i>
-									<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px" placeholder="... بحث">		
+									<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px" placeholder="... بحث">
 								</li>
 								<li><a href="{{url('/about_us')}}">من نحن</a></li>
 								<li><a href="{{url('/register_charity')}}">أنضم كجمعية</a></li>
@@ -99,12 +104,12 @@
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/login')}}"> تسجيل الدخول</a></li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/register')}}">أنضم كمتبرع</a></li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/register_charity')}}">أنضم كجمعية</a></li>
-				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/about_us')}}">من نحن</a></li>	
+				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/about_us')}}">من نحن</a></li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;margin-bottom: 100px">
 					<i onclick="test()" class="fa fa-search" style="right:160px;cursor: pointer"></i>
-					<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px;margin-bottom: 10px;" placeholder="... بحث">		
+					<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px;margin-bottom: 10px;" placeholder="... بحث">
 				</li>
 			</ul>
-				
+
 		</div>
 	</div>

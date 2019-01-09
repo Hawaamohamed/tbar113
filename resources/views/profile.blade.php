@@ -1,15 +1,36 @@
-@extends('index3')
-
+@extends('index2')
 @section('content')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+.cover2-img img{
+	 width:100%;
+	 height:160px;
+	 margin-top: 0;
+ }
+</style>
 <div style="background: #ccc;margin-top:60px;min-height:474px;">
 
   <!--******************Cover Image*********************-->
   <div class="row">
     <div class='col-sm-12'>
-     <div class='cover-img'>
-          <img class="img-responsive" src="{{ url('/design/images/horse.jpg') }}" style="width: 100%;height: 50%;margin-top: 0">
-
+     <div class="cover-img clearfix">
+       <div class="alert" id="message_cover" style="display: none"></div>
+         <div class="hover-content" style="border-radius: 0;width: 100%; margin: 0;right: 0;left: 0;">
+         <form method="post" id="upload_form_cover" enctype="multipart/form-data" style="position:absolute;margin-top: 18%;margin-left: 50%;">
+            {{ csrf_field() }}
+          <label class="btn" id="upload_img">
+              <i class="fa fa-camera" style="font-size: 18px;"></i><input type="file" name="select_file" id="select_file_cover" style="display: none;">
+          </label>
+          <input type="hidden" value="{{$cover->id}}" name="getId">
+					<input type="hidden" value="cover" name="type">
+        </form>
+       </div>
+			 <img class="img-responsive" src="{{ asset('images/horse.jpg') }}" id="uploaded_image_cover" style="width: 100%;margin-top: 0">
+          <!--<img class="img-responsive" src="{{ URL::to('/') }}/images/{{$cover->image}}"id="uploaded_image_cover" style="width: 100%;margin-top: 0"> -->
      </div>
    </div>
   </div>
@@ -17,17 +38,26 @@
 
     <div class="row" dir='rtl'>
      <!--**************Personal Image**********************-->
-     <div class='col-sm-3 col-xs-12 img-info'>
-        <div class="col-sm-12 profile-img center-block">
-          <!-- start Avatar -->
-              <img class="img-responsive img-thumbnail center-block"  src="{{ url('/design/images/1.JPG') }}">
-              <form type='form' enctype="multipart/form-data">
-                  <label class="btn" id="change_img">
-                      <i class="fa fa-camera" style="font-size:9px"></i><input type="file" id='avatar' name='avatar' style="display: none;">
-                       تعديل
-                  </label>
-              </form>
-          <!-- End Avatar  -->
+     <div class='col-sm-3 col-xs-12 img-info' style='padding: 0'>
+
+				 <div class=" clearfix" style="position: relative;left: 0%; top: 0px;">
+					 <!-- start Avatar -->
+			   <div class="cover2-img">
+					<img class="img-responsive" id="uploaded_image_profile" src="{{asset('images/1.jpg')}}">
+					  <!--<img class="img-responsive" id="uploaded_image_profile" src="{{ URL::to('/') }}/images/{{$profile->image}}">-->
+		     </div>
+              <div class="hover-content">
+                <div class="alert" id="message_profile" style="display: none"></div>
+                <form method="post" id="upload_form_profile" enctype="multipart/form-data">
+                   {{ csrf_field() }}
+                 <label class="btn" id="upload_img_profile">
+                     <span class='edit' style="">Edit</span> <i class="fa fa-camera" style="font-size: 20px;color: white;"></i><input type="file" name="select_file" id="select_file_profile" style="display: none;">
+                 </label>
+                 <input type="hidden" value="{{$profile->id}}" name="getId">
+								 <input type="hidden" value="profile" name="type">
+                </form>
+                <!-- End Avatar  -->
+            </div>
 
       </div>
       <div class="col-sm-12">
@@ -46,16 +76,16 @@
     <div class='col-md-7 col-sm-7 col-xs-12 div1'>
       <!--New Post-->
       <setion class="post newPost">
-        <div class="panel panel-default" dir='ltr' style="margin-top: 20px;">
+        <div class="panel panel-default" dir='ltr'>
           <div class="panel-body">
 
             <div class="head" style="margin-top: 20px">
              <div class='row' dir='rtl'>
                <div class='col-sm-3 col-xs-4'>
-                <img src="{{ url("/design/images/2.gif") }}" class="img-responsive display-inline pull-right" style="max-width:80px;max-height:80px;border-radius:50%;">
+                <img src="{{ url('/design/images/2.gif') }}" class="img-responsive display-inline pull-right" style="max-width:80px;max-height:80px;border-radius:50%;">
                </div>
                <div class='col-sm-5 col-xs-5'>
-                 <span class="name pull-right">اسم الجمعيه بالكامل </span>
+                 <span class="name name_pro pull-right">اسم الجمعيه بالكامل </span>
                </div>
               <div class='col-sm-2 col-sm-offset-1 col-xs-1'>
                 <span class='date pull-left'> التاريخ </span>
@@ -64,7 +94,10 @@
            </div>
            <div class="row">
             <div class="col-sm-12">
-             <textarea type="text" name='post' class='question form-control has-feedback' rows="3"  cols="18" wrap="soft" style="overflow:hidden; resize:none;" dir='rtl' Placeholder="اكتب شيئا..."></textarea>
+             <textarea type="text" name='post' class='question form-control has-feedback' rows="4"  cols="18" wrap="soft" style="overflow:hidden; resize:none;" dir='rtl' Placeholder="اكتب شيئا..."></textarea>
+            </div>
+            <div class="col-sm-12">
+              <span id="uploaded_image"></span>
             </div>
            </div>
 
@@ -73,12 +106,17 @@
          <div class='panel-footer'>
            <div class="row">
              <div class='col-sm-9 col-xs-6'>
+               <div class="alert" id="message" style="display: none"></div>
+               <form method="post" id="upload_form" enctype="multipart/form-data">
+                  {{ csrf_field() }}
                 <label class="btn" id="upload_img">
-                    <i class="fa fa-camera"></i><input type="file" class='photo' name='photo' style="display: none;">
+                    <i class="fa fa-camera"></i><input type="file" name="select_file" id="select_file" style="display: none;" multiple>
                 </label>
+              </form>
+
             </div>
             <div class='col-sm-3 col-xs-6'>
-              <span class='btn btn-info pull-right publish' id=""> نشر</span>
+              <span class='btn btn-info pull-right publish pub_pro' id=""> نشر</span>
             </div>
 
           </div>
@@ -99,7 +137,7 @@
                 <img src="{{ url("/design/images/2.gif") }}" class="img-responsive display-inline pull-right" style="max-width:80px;max-height:80px;border-radius:50%;">
                </div>
                <div class='col-sm-5 col-xs-5'>
-                 <span class="name pull-right">اسم الجمعيه بالكامل </span>
+                 <span class="name name_pro pull-right">اسم الجمعيه بالكامل </span>
                </div>
               <div class='col-sm-2 col-sm-offset-1 col-xs-1'>
                <span class='date pull-left'> التاريخ </span>
@@ -127,12 +165,9 @@
           </div>
          </div>
          <div class='panel-footer'>
-           <div class="row">
-            <div class='col-sm-9 col-xs-6'>
-             <div class='btn btn-default share' id=""><span>مشاركة</span> <i class="fa fa-share " aria-hidden="true"></i></div>
-            </div>
-            <div class='col-sm-3  col-xs-6'>
-              <span class='btn btn-default pull-right donation' aria-hidden="true" href="#myModal2" data-id="" data-toggle="modal"> تبرع</span>
+           <div class="row" dir='rtl'>
+            <div class='col-sm-3 col-xs-6'>
+              <span class='btn btn-default pull-right donation don_pro' aria-hidden="true" href="#myModal2" data-id="" data-toggle="modal" style="background: #0a3331;"> المتبرعين</span>
             </div>
           </div>
         </div>
@@ -145,36 +180,98 @@
   <a href="#" class="text-center center-block" style="color: lightseagreen">تفاصيل البوستات</a>
 </div>
 
-
 </div>
 
-<!--
+<script src="{{ url("/design/colo/js/jquery-3.2.1.min.js") }}"></script>
 <script>
 $(document).ready(function(){
 
-$(".photo").change(function(e){
+//Upload Post Image
+ $('#upload_form').on('change', function(event){
+  event.preventDefault();
+  $.ajax({
+   url:"{{ route('ajaxupload.store') }}",
+   method:"POST",
+   data:new FormData(this),
+   dataType:'JSON',
+   contentType: false,
+   cache: false,
+   processData: false,
+   success:function(data)
+   {
+    //$('#message').css('display', 'block');
+    //$('#message').html(data.message);
+    //$('#message').addClass(data.class_name);
+    $('#uploaded_image').html("<img src='images/"+data.uploaded_image+"'class='img-responsive'>");
+    $('#uploaded_image img').css("width","100%");
+   }
+  })
+ });
 
-  var tmp_name    = $(".photo").val();
-  var fileName    = e.target.files[0].name;
-  var size        = e.target.files[0].size;
-  var photo_type = e.target.files[0].type;
+
+// Profile Image
+ $('#upload_form_profile').on('change', function(event){
+  event.preventDefault();
+  $.ajax({
+   url:"{{ route('ajaxupload.update') }}",
+   method:"POST",
+   data:new FormData(this),
+   dataType:'JSON',
+   contentType: false,
+   cache: false,
+   processData: false,
+   success:function(data)
+   {
+    //$('#message_profile').css('display', 'block');
+    //$('#message_profile').html(data.message);
+    //$('#message_profile').addClass(data.class_name);
+    $('#uploaded_image_profile').attr('src',"images/"+data.uploaded_image).css({
+      'width':'100%',
+      'max-height': '185px'
+    });
+
+   }
+  })
+ });
+
+// Cover Image
+ $('#upload_form_cover').on('change', function(event){
+  event.preventDefault();
+  $.ajax({
+   url:"{{ route('ajaxupload.update') }}",
+   method:"POST",
+   data:new FormData(this),
+   dataType:'JSON',
+   contentType: false,
+   cache: false,
+   processData: false,
+   success:function(data)
+   {
+    //$('#message_cover').css('display', 'block');
+    //$('#message_cover').html(data.message);
+    //$('#message_cover').addClass(data.class_name);
+    $('#uploaded_image_cover').attr('src',"images/"+data.uploaded_image).css({
+      'width':'100%',
+      'height':'350px'
+    });
+   }
+  })
+ });
 
 
-//$(".images").append("<img src='{{ url('/design/images/moh.jpg') }}' class='img-responsive display-inline pull-right' style='width:50%;'>");
+var textarea = document.querySelector('textarea');
 
-$.ajax({
-  url:"photos.php",
-	type:'POST',
-  data:{fileName:fileName,tmp_name,tmp_name,size,size,avatar_type,avatar_type},
-  contentType:"multipart/form-data",
-  success:function(data)
-  {
-   //$(".images").append("<img src='{{ url('/design/images/"+data+"') }}' class='img-responsive display-inline pull-right' style='width:50%;'>");
-  //document.write(data);
-	}
-})
-})
+textarea.addEventListener('keydown', autosize);
 
+function autosize(){
+  var el = this;
+  setTimeout(function(){
+    el.style.cssText = 'height:auto; padding:0';
+    // for box-sizing other than "content-box" use:
+    // el.style.cssText = '-moz-box-sizing:content-box';
+    el.style.cssText = 'height:' + el.scrollHeight + 'px';
+  },0);
+}
 });
-</script> -->
+</script>
 @endsection
