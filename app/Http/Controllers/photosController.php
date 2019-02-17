@@ -44,34 +44,75 @@ class photosController extends Controller
       $validation = Validator::make($request->all(), [
       'select_file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2024'
      ]);
-     if($validation->passes())
-     {
-      $image = $request->file('select_file');
-      $new_name = rand() . '.' . $image->getClientOriginalExtension();
-      $image->move(public_path('images'), $new_name);
+     $image = $request->file('select_file');
 
-      $img_table = new Images;
-      $img_table->image = $new_name;
-      $img_table->type = 'post';
-      $img_table->userid = 1;
-      $img_table->charityid = 0;
-      $img_table->postid = 0;
-      $img_table->save();
+       if($validation->passes())
+       {
+         $new_name = rand() . '.' . $image->getClientOriginalExtension();
+         $image->move(public_path('images'), $new_name);
+         $img_table = new Images;
+         $img_table->image = $new_name;
+         $img_table->type = 'post';
+         $img_table->userid = 1;
+         $img_table->charityid = 0;
+         $img_table->postid = 0;
+         $img_table->save();
+        return response()->json([
+         'message'   => 'Image Upload Successfully',
+         'uploaded_image' => $new_name,
+         'class_name'  => 'alert-success'
+        ]);
+       }
+       else
+       {
+        return response()->json([
+         'message'   => $validation->errors()->all(),
+         'uploaded_image' => 'no-image.jpg',
+         'class_name'  => 'alert-danger'
+        ]);
+       }
 
-      return response()->json([
-       'message'   => 'Image Upload Successfully',
-       'uploaded_image' => $new_name,
-       'class_name'  => 'alert-success'
-      ]);
-     }
-     else
-     {
-      return response()->json([
-       'message'   => $validation->errors()->all(),
-       'uploaded_image' => 'no-image.jpg',
-       'class_name'  => 'alert-danger'
-      ]);
-     }
+}
+public function action(Request $request)
+{
+
+  $validation = Validator::make($request->all(), [
+  'select_file.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2024'
+ ]);
+ $images = $request->file('select_file');
+ $arr = [];
+ $i=0;
+ foreach($images as $image)
+ {
+   $new_name = rand() . '.' . $image->getClientOriginalExtension();
+   $image->move(public_path('images'), $new_name);
+   $img_table = new Images;
+   $img_table->image = $new_name;
+   $img_table->type = 'post';
+   $img_table->userid = 1;
+   $img_table->charityid = 0;
+   $img_table->postid = 0;
+   $img_table->save();
+   $arr[$i]=$new_name;
+   $i++;
+ }
+   if($validation->passes())
+   {
+    return response()->json([
+     'message'   => 'Image Upload Successfully',
+     'uploaded_image' => $new_name,
+     'class_name'  => 'alert-success'
+    ]);
+   }
+   else
+   {
+    return response()->json([
+     'message'   => $validation->errors()->all(),
+     'uploaded_image' => 'no-image.jpg',
+     'class_name'  => 'alert-danger'
+    ]);
+   }
+
 }
 
     /**

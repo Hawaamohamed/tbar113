@@ -90,7 +90,7 @@
 							<ul class="navbar_menu">
 								<li>
 									<i onclick="test()" class="fa fa-search" style="right:160px;cursor: pointer"></i>
-									<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px" placeholder="... بحث">		
+									<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px" placeholder="... بحث">
 								</li>
 								<li><a href="{{url('/about_us')}}">من نحن</a></li>
 								<li><a href="{{url('/persons')}}">الحالات</a></li>
@@ -144,17 +144,17 @@
                         <option style="color:black;font-weight: bold;" value="1">جمعية</option>
                         <option style="color:black;font-weight: bold;" value="1">جمعية</option>
                         <option style="color:black;font-weight: bold;" value="1">جمعية</option>
-                        
+
                     </select>
                 </li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/home')}}"> الرئيسية</a></li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/persons')}}"> الحالات</a></li>
-				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/about_us')}}">من نحن</a></li>	
+				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/about_us')}}">من نحن</a></li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;margin-bottom: 100px">
 					<i onclick="test()" class="fa fa-search" style="right:160px;cursor: pointer"></i>
 					<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px;margin-bottom: 10px;" placeholder="... بحث">		
 				</li>
 			</ul>
-				
+
 		</div>
 	</div>
