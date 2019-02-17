@@ -59,7 +59,7 @@
     /* jssor slider loading skin spin css */
     .jssorl-009-spin img {
         animation-name: jssorl-009-spin;
-        animation-duration: 1.6s;
+        animation-duration: 0.5s;
         animation-iteration-count: infinite;
         animation-timing-function: linear;
     }
@@ -99,7 +99,7 @@
         text-align: right ;
         font-family:Calibri,'Segoe UI Semilight', arial;
         color: darkcyan ;
-        font-size: 19px 
+        font-size: 19px
     }
     .mydashdiv
     {
@@ -123,85 +123,35 @@
 <div class="container" >
 
     <div class="row" style="margin-top: 50px">
-        <div class="col-xs-12"> 
+        <div class="col-xs-12">
             <img style="width:300px;height:230px" src="{{ url("design/images/1.jpg") }}" class="rounded mx-auto d-block" alt="Logo">
         </div>
-    </div>
-
-    <div class="row" style="margin-top: 20px">
-        <div class="col-xs-12">
-            <h3 class="myheader">( تبرع )</h3>
-            <p class="myp">يقدم هذا الموقع خدمات للجمعيات الخيرية للمساعدة على نشر الخير و تسهيل العملية الخيرية </p>
-            <p class="myp">الخدمات التى يقدمها الموقع:</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-9 col-sm-9 col-md-10 col-lg-11">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="text-align:right;font-family:Calibri,'Segoe UI Semilight', arial;font-size: 15px">
-                    <strong>نشر منشورات عن الحالات لجمع تبرعات لها</strong> 
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-9 col-sm-3 col-md-2 col-lg-1">
-            <div class="thumbnail" style="border: 0">
-                <img style="width: 37px;height:40px" class="myimg img-responsive user-photo" src="{{url("design/images/post.jpg")}}">
-            </div>
-        </div> 
-    </div>
-
-    <div class="row">
-            <div class="col-xs-9 col-sm-9 col-md-10 col-lg-11">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="text-align:right;font-family:Calibri,'Segoe UI Semilight', arial;font-size: 15px">
-                    <strong>أستقبال الجمعية تبرعات عن طريق حساب بنكى و التحويل عبر الانترنت</strong> 
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-9 col-sm-3 col-md-2 col-lg-1">
-            <div class="thumbnail" style="border: 0">
-                <img style="width: 42px;height:40px" class="img-responsive user-photo" src="{{url("design/images/cash.png")}}">
-            </div>
-        </div> 
-    </div>
-
-    <div class="row">
-        <div class="col-xs-9 col-sm-9 col-md-10 col-lg-11">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="text-align:right;font-family:Calibri,'Segoe UI Semilight', arial;font-size: 15px">
-                    <strong>إمكانية إجراء محادثة نصيه مع الجمعيات الأخرى و الأشخاص المسجلين فى هذا الموقع</strong> 
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-9 col-sm-3 col-md-2 col-lg-1">
-            <div class="thumbnail" style="border: 0">
-                <img style="width: 37px;height:40px" class="img-responsive user-photo" src="{{url("design/images/chat.jpg")}}">
-            </div>
-        </div> 
     </div>
 
     <!-- slider -->
     <div id="jssor_1" style="position:relative;margin:50px auto;top:0px;left:0px;width:980px;height:380px;overflow:hidden;visibility:hidden;">
             <!-- Loading Screen -->
-            <div data-u="loading" class="jssorl-009-spin" 
+            <div data-u="loading" class="jssorl-009-spin"
             style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                 <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="{{ url("/design/images/moh.jpg") }}" />
             </div>
             <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
                 <div>
-                    <img data-u="image" src="{{ url("/design/images/p1.jpg") }}" />
+                    <img data-u="image" src="{{ url("/design/images/n6.jpg") }}" />
                 </div>
                 <div>
-                    <img data-u="image" src="{{ url("/design/images/p2.jpg") }}" />
+                    <img data-u="image" src="{{ url("/design/images/n14.jpg") }}" />
                 </div>
                 <div>
-                    <img data-u="image" src="{{ url("/design/images/p3.jpg") }}" />
+                    <img data-u="image" src="{{ url("/design/images/n15.jpg") }}" />
                 </div>
                 <div>
-                    <img data-u="image" src="{{ url("/design/images/p4.jpg") }}" />
+                    <img data-u="image" src="{{ url("/design/images/n17.jpg") }}" />
                 </div>
-                <div style="background-color:lightseagreen;">
+                <div>
+                    <img data-u="image" src="{{ url("/design/images/n9.jpg") }}" />
+                </div>
+              <!--  <div style="background-color:lightseagreen;">
                     <div style="position:absolute;top:50px;left:50px;width:450px;height:62px;z-index:0;font-size:16px;color:#000000;line-height:24px;text-align:left;padding:5px;box-sizing:border-box;">
                         TBAR3<br>
                         Anonymous Team <br>
@@ -209,7 +159,7 @@
                         01016978512 <br>
                         01147610996
                     </div>
-                </div>
+                </div>-->
             </div>
             <!-- Bullet Navigator -->
             <div data-u="navigator" class="jssorb053" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
@@ -236,6 +186,62 @@
             </div>
         </div>
 
+
+
+    <div class="row" style="margin-top: 20px">
+        <div class="col-xs-12">
+            <h3 class="myheader">( تبرع )</h3>
+            <p class="myp">يقدم هذا الموقع خدمات للجمعيات الخيرية للمساعدة على نشر الخير و تسهيل العملية الخيرية </p>
+            <p class="myp">الخدمات التى يقدمها الموقع:</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-10 col-lg-11">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align:right;font-family:Calibri,'Segoe UI Semilight', arial;font-size: 15px">
+                    <strong>نشر منشورات عن الحالات لجمع تبرعات لها</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-3 col-md-2 col-lg-1">
+            <div class="thumbnail" style="border: 0">
+                <img style="width: 37px;height:40px" class="myimg img-responsive user-photo" src="{{url("design/images/post.jpg")}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-xs-9 col-sm-9 col-md-10 col-lg-11">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align:right;font-family:Calibri,'Segoe UI Semilight', arial;font-size: 15px">
+                    <strong>أستقبال الجمعية تبرعات عن طريق حساب بنكى و التحويل عبر الانترنت</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-3 col-md-2 col-lg-1">
+            <div class="thumbnail" style="border: 0">
+                <img style="width: 42px;height:40px" class="img-responsive user-photo" src="{{url("design/images/cash.png")}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-10 col-lg-11">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align:right;font-family:Calibri,'Segoe UI Semilight', arial;font-size: 15px">
+                    <strong>إمكانية إجراء محادثة نصيه مع الجمعيات الأخرى و الأشخاص المسجلين فى هذا الموقع</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-3 col-md-2 col-lg-1">
+            <div class="thumbnail" style="border: 0">
+                <img style="width: 37px;height:40px" class="img-responsive user-photo" src="{{url("design/images/chat.jpg")}}">
+            </div>
+        </div>
+    </div>
+
+
     <!-- dahbord-->
      <div class="row" style="margin:50px 0;margin-top: 70px">
         <div class="col-md-4">
@@ -243,7 +249,7 @@
                 <div class="card-body">
                     <div class="stat-widget-five">
                         <div class="stat-icon dib flat-color-1">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-edit"></i>
                         </div>
                         <div class="stat-content">
                             <div class="text-left dib">
@@ -261,7 +267,7 @@
                 <div class="card-body">
                     <div class="stat-widget-five">
                         <div class="stat-icon dib flat-color-3">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-home"></i>
                         </div>
                         <div class="stat-content">
                             <div class="text-left dib">
@@ -292,7 +298,7 @@
             </div>
         </div>
     </div>
-    
+
 
 </div>
 

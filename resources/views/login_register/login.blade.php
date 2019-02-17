@@ -7,7 +7,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ url('/design/lte/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url('/design/lte/plugins/font-awesome.css') }}">
-  <link rel="stylesheet" href="{{ url('/design/lte/plugins/ionicons.css') }}">  
+  <link rel="stylesheet" href="{{ url('/design/lte/plugins/ionicons.css') }}">
   <link rel="stylesheet" href="{{ url('/design/lte/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ url('/design/lte/plugins/iCheck/square/blue.css') }}plugins/iCheck/square/blue.css">
 
@@ -17,16 +17,16 @@
   <![endif]-->
 
   <link rel="stylesheet" type="text/css" href="{{ url("/design/colo/css/mystyle.css") }}">
-  
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#" style="text-shadow: 2px 2px 8px lightseagreen"><b>TBAR</b>3</a>
+    <a href="#" style=""><b>TBAR3</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg" style="color:lightseagreen ;">تسجيل الدخول</p>
+    <p class="login-box-msg">تسجيل الدخول</p>
 
     <form action="../../index2.html" method="post">
       <div class="form-group has-feedback">

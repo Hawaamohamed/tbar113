@@ -559,7 +559,7 @@ section
 .navbar_menu li a
 {
 	display: block;
-	color: darkcyan ;
+	color: #575a5a;
 	font-size: 15px;
 	font-weight: bold;
 	text-transform: uppercase;
