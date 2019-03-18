@@ -48,12 +48,11 @@
           <label class="btn" id="upload_img">
               <i class="fa fa-camera" style="font-size: 18px;"></i><input type="file" name="select_file" id="select_file_cover" style="display: none;">
           </label>
-          <input type="hidden" value="{{$cover->id}}" name="getId">
+          <input type="hidden" value="" name="getId">
         </form>
        </div>
 			 <!--<h2 class='text-center cover-head'>Cover Image</h2>-->
 			 <img class="img-responsive" src="{{ url('/images/cover.JPG') }}" id="uploaded_image_cover" style="width: 100%;margin-top: 0;height:auto">
-          <!--<img class="img-responsive" src="{{ URL::to('/') }}/images/{{$cover->image}}"id="uploaded_image_cover" style="width: 100%;margin-top: 0">-->
      </div>
    </div>
   </div>
@@ -68,7 +67,6 @@
 			   <div class="cover2-img">
 					 <!--<h3 class="text-center profile-head">Profile Image</h3>-->
 					 <img class="img-responsive" id="uploaded_image_profile" src="{{ url('/images/pro.JPG') }}" style="height:auto">
-					 <!--<img class="img-responsive" id="uploaded_image_profile" src="{{ URL::to('/') }}/images/{{$profile->image}}"> -->
 		     </div>
               <div class="hover-content">
                 <div class="alert" id="message_profile" style="display: none"></div>
@@ -77,7 +75,7 @@
                  <label class="btn" id="upload_img_profile">
                      <span class='edit' style="">Edit</span> <i class="fa fa-camera" style="font-size: 20px;color: white;"></i><input type="file" name="select_file" id="select_file_profile" style="display: none;">
                  </label>
-                 <input type="hidden" value="{{$profile->id}}" name="getId">
+                 <input type="hidden" value="" name="getId">
                 </form>
                 <!-- End Avatar  -->
             </div>
@@ -148,56 +146,7 @@
        </div>
     </section>
 
-<!--Old Posts-->
-<!--
-      <setion class="post">
-        <div class="panel panel-default" dir='ltr'>
-          <div class="panel-body">
-              <i class="fa fa-chevron-down" aria-hidden="true" href="#myModal" type="" data-id="PostId" data-toggle="modal"></i>
 
-            <div class="head">
-             <div class='row' dir='rtl'>
-               <div class='col-sm-3 col-xs-4'>
-                <img src="{{ url("/design/images/2.gif") }}" class="img-responsive display-inline pull-right" style="max-width:80px;max-height:80px;border-radius:50%;">
-               </div>
-               <div class='col-sm-5 col-xs-5'>
-                 <span class="name name_pro pull-right">اسم الجمعيه بالكامل </span>
-               </div>
-              <div class='col-sm-2 col-sm-offset-1 col-xs-1'>
-               <span class='date pull-left'> التاريخ </span>
-              </div>
-             </div>
-           </div>
-           <br>
-           <div class='row' dir="rtl" style='min-height: 60px;'>
-             <div class='col-sm-9 col-xs-12'>
-                <p class='lead pull-right'>البوست</p>
-            </div>
-           <img src="{{ url("/design/images/3.jpeg") }}" class="img-responsive display-inline pull-right post_img" style="width:95%;height:200px;margin-bottom:20px;margin-right:15px;">
-          </div>
-          <div class='row' style="margin-bottom:-4%;">
-            <div class='col-sm-1 col-sm-offset-4 hidden-xs'><span>5000</span></div>
-
-            <div class='col-sm-3 col-xs-12'>
-            <div class="progress">
-             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%;">73%</div>
-            </div>
-           </div>
-
-          <div class='col-sm-1 hidden-xs span2'><span>1000</span></div>
-
-          </div>
-         </div>
-         <div class='panel-footer'>
-           <div class="row" dir='rtl'>
-            <div class='col-sm-3 col-xs-6'>
-              <span class='btn btn-default pull-right donation don_pro' aria-hidden="true" href="#myModal2" data-id="" data-toggle="modal" style="background: #0a3331;"> المتبرعين</span>
-            </div>
-          </div>
-        </div>
-       </div>
-    </section>
-	-->
     </div>
         <!--************************End Posts**********************-->
 

@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="{{ url('/design/lte/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ url('/design/lte/plugins/iCheck/square/blue.css') }}plugins/iCheck/square/blue.css">
 
-
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -21,6 +20,22 @@
   <link rel="stylesheet" type="text/css" href="{{ url("/design/register.css") }}">
 </head>
 <body class="hold-transition login-page">
+@if(count($errors->all())>0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $e)
+                <li>{{$e}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+@if(session()->has('added'))
+    <div class="alert alert-success">
+        <h2>{{session('added')}}</h2>
+    </div>
+@endif
  <div class="container">
 <div class="login-box" style="width: auto">
   <div class="login-logo">
@@ -43,32 +58,50 @@
   <div class="login-box-body" style="height:auto;border-radius: 15px 0 0 15px;">
     <p class="login-box-msg" style="color: ;">إنشاء حساب كجمعية</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="{{url('/charity/register')}}" method="post">
+{{csrf_field()}}
+        <div class="form-group has-feedback">
+            <input type="text" name="name" class="form-control" placeholder="اسم الجمعية" >
+            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input type="text" id="address" name="address" class="form-control" placeholder="العنوان" >
+            <span class="glyphicon glyphicon-home form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+            <div id="us1" class="form-group has-feedback" style="width:100%; height: 200px;"></div>
+            <input type="hidden" name="long" id="long">
+            <input type="hidden" name="lat" id="lat">
+        </div>
+
 
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="العنوان" >
-        <span class="glyphicon glyphicon-home form-control-feedback"></span>
-      </div>
-
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="رقم الموبيل" >
+        <input type="text" name="phone" class="form-control" placeholder="رقم الموبيل" >
         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
       </div>
 
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="البريد الإلكترونى" >
+        <input type="email" name="email" class="form-control" placeholder="البريد الإلكترونى" >
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
 
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="كلمة السر">
+        <input type="password" name="password" class="form-control" placeholder="كلمة السر">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
 
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="تأكيد كلمة السر">
+        <input type="password" class="form-control" name="confirm" placeholder="تأكيد كلمة السر">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
+        <div class="form-group has-feedback">
+            <input type="text" name="visa" class="form-control" placeholder="Visa Card" >
+            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+        </div>
+
+
 
       <div class="row">
         <div class="col-xs-8">
@@ -76,7 +109,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-offset-3 col-xs-6">
-          <button type="submit" class="btn"><a href="{{ url('profile') }}" style="color:white">تسجيل</a></button>
+          <button type="submit" class="btn"> تسجيل</button>
         </div>
         <!-- /.col -->
       </div>
@@ -106,5 +139,23 @@
 
   });
 </script>
+ <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBwxuW2cdXbL38w9dcPOXfGLmi1J7AVVB8'></script>
+ <script type="text/javascript" src='{{url('js/locationpicker/locationpicker.jquery.js')}}'></script>
+ <script>
+     $('#us1').locationpicker({
+         location: {
+             latitude: 27.19200318978858,
+             longitude: 31.169902801513672
+         },
+         radius: 300,
+         markerIcon: '{{url('images/map-marker.png')}}',
+         inputBinding: {
+             latitudeInput: $('#lat'),
+             longitudeInput: $('#long'),
+             //radiusInput: $('#us2-radius'),
+             locationNameInput: $('#address')
+         }
+     });
+ </script>
 </body>
 </html>

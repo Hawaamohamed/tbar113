@@ -15,7 +15,8 @@ Route::get('/register', function()
 {
     return view('/login_register/register') ;
 });
-
+Route::post('charity/register','CharityController@register');
+Route::post('charity/login','CharityController@login');
 Route::get('/register_charity', function()
 {
     return view('/login_register/register_charity') ;

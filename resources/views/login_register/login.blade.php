@@ -20,6 +20,22 @@
 
 </head>
 <body class="hold-transition login-page">
+@if(count($errors->all())>0)
+  <div class="alert alert-danger">
+    <ul>
+      @foreach($errors->all() as $e)
+        <li>{{$e}}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
+
+@if(session()->has('added'))
+  <div class="alert alert-success">
+    <h2>{{session('added')}}</h2>
+  </div>
+@endif
 <div class="login-box">
   <div class="login-logo">
     <a href="#" style=""><b>TBAR3</b></a>
@@ -28,13 +44,14 @@
   <div class="login-box-body">
     <p class="login-box-msg">تسجيل الدخول</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="{{url('charity/login')}}" method="post">
+      {{csrf_field()}}
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="البريد الإلكترونى">
+        <input type="email" name="email" class="form-control" placeholder="البريد الإلكترونى">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="كلمة السر">
+        <input type="password" name="password" class="form-control" placeholder="كلمة السر">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
