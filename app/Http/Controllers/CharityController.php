@@ -6,6 +6,7 @@ use App\Charity;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 class CharityController extends Controller
 {
     public function register(){
@@ -37,8 +38,8 @@ class CharityController extends Controller
     public function login(){
         if(auth()->guard('charity')->attempt(['email'=>request('email'),'password'=>request('password')]))
         {
-
-            return redirect('/profile');
+           $id=DB::table('charities')->where('email',request('email'))->value('id');
+           return view('profile',['id'=>$id]);
         }else
         {
 

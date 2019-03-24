@@ -86,9 +86,10 @@
         <h4 class='text-center'style="color:'green';"> اسم الجمعية</h4><br>
         <p class='text-center' dir='rtl'> المحافظة</p>
         <p class='text-center'>رقم التلفون </p>
-        <p class='text-center'>تاريخ الانضمام </p><br>
-      </div>
+        <p class='text-center'>تاريخ الانضمام </p>
+         </div>
 			  <a href="#" class="text-center center-block" style="color: lightseagreen;background:white;font-size:18px;">تفاصيل البوستات</a>
+          <a href="{{url('update_ch')}}/{{$id}}" class="text-center center-block" style="color: lightseagreen;background:white;font-size:18px;">تعديل بيانات الجمعيه</a>
  </div>
 
      </div>
@@ -96,9 +97,15 @@
 
 <!--***************Start Posts*****************************-->
     <div class='col-md-8 col-sm-8 col-xs-12 div1'>
+        @if(session()->has('update'))
+            <div class="alert alert-success">
+                <h2>{{session('update')}}</h2>
+            </div>
+    @endif
       <!--New Post-->
       <setion class="post newPost">
         <div class="panel panel-default" dir='ltr'>
+
           <div class="panel-body">
 
             <div class="head" style="margin-top: 20px">
