@@ -23,8 +23,11 @@ class UpdataDataCharity extends Controller
                   'phone' => "required",
                   'address' => "required",
                   'visa' => "required",
+<<<<<<< HEAD
                   'lat'=>'required',
                   'long'=>'required'
+=======
+>>>>>>> 2326997575b33a176aaf474ac2b9a7911bdc67f9
               ], [], [
                   'name' =>'الاسم' ,
                   'email' =>'الاميل',
@@ -41,9 +44,13 @@ class UpdataDataCharity extends Controller
                   'phone' => "required",
                   'address' => "required",
                   'visa' => "required",
+<<<<<<< HEAD
                   'password' => "sometimes|nullable|min:6",
                   'lat'=>'required',
                   'long'=>'required'
+=======
+                  'password' => "sometimes|nullable|min:6"
+>>>>>>> 2326997575b33a176aaf474ac2b9a7911bdc67f9
               ], [], [
                   'name' =>'الاسم' ,
                   'email' =>'الاميل',

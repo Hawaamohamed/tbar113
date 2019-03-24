@@ -41,6 +41,7 @@
 
             <div class="form-group" style="font-size: 20px; max-width: 600px">
                 <label name="address" style="float: right;text-shadow:4px 4px 18px green;">العنوان</label>
+<<<<<<< HEAD
                 <input type="text" name="address" id="address" value="{{$row->address}}" class="form-control" style="font-size: 20px;text-align: right">
             </div>
 
@@ -48,6 +49,9 @@
                 <div id="us1" class="form-group has-feedback" style="width:100%; height: 200px;"></div>
                 <input type="hidden" name="long" id="long" value="{{$row->long}}">
                 <input type="hidden" name="lat" id="lat" value="{{$row->lat}}">
+=======
+                <input type="text" name="address" value="{{$row->address}}" class="form-control" style="font-size: 20px;text-align: right">
+>>>>>>> 2326997575b33a176aaf474ac2b9a7911bdc67f9
             </div>
 
             <div class="form-group" style="font-size: 20px; max-width: 600px">
@@ -71,6 +75,7 @@
         </div>
         <!-- /.box-body -->
     </div>
+<<<<<<< HEAD
     <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBwxuW2cdXbL38w9dcPOXfGLmi1J7AVVB8'></script>
     <script type="text/javascript" src='{{url('js/locationpicker/locationpicker.jquery.js')}}'></script>
     <script>
@@ -89,4 +94,6 @@
             }
         });
     </script>
+=======
+>>>>>>> 2326997575b33a176aaf474ac2b9a7911bdc67f9
 @endsection
