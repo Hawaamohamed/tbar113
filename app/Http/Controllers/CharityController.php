@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
+use App\Post;
+use App\Images;
+
 class CharityController extends Controller
 {
     public function register(){
@@ -39,11 +44,16 @@ class CharityController extends Controller
         if(auth()->guard('charity')->attempt(['email'=>request('email'),'password'=>request('password')]))
         {
            $id=DB::table('charities')->where('email',request('email'))->value('id');
-           return view('profile',['id'=>$id]);
+           $charity = Charity::find($id);
+           $posts = $charity->posts()->orderBy('id', 'DESC')->get();
+           Session::put('charity.charity_id',$id);
+           Session::put('charity.name',$charity->name);
+           Session::put('charity.profile',$charity->profile);
+           return view('profile',compact('id','charity',"posts"));
         }else
         {
-
             return back();
         }
     }
+
 }

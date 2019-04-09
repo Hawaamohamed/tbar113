@@ -21,8 +21,8 @@
 </head>
 <body class="hold-transition login-page">
 @if(count($errors->all())>0)
-    <div class="alert alert-danger">
-        <ul>
+    <div class="alert alert-danger text-center">
+        <ul class="text-center">
             @foreach($errors->all() as $e)
                 <li>{{$e}}</li>
             @endforeach
@@ -64,17 +64,6 @@
             <input type="text" name="name" class="form-control" placeholder="اسم الجمعية" >
             <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
-            <input type="text" id="address" name="address" class="form-control" placeholder="العنوان" >
-            <span class="glyphicon glyphicon-home form-control-feedback"></span>
-        </div>
-
-        <div class="form-group has-feedback">
-            <div id="us1" class="form-group has-feedback" style="width:100%; height: 200px;"></div>
-            <input type="hidden" name="long" id="long">
-            <input type="hidden" name="lat" id="lat">
-        </div>
-
 
       <div class="form-group has-feedback">
         <input type="text" name="phone" class="form-control" placeholder="رقم الموبيل" >
@@ -100,7 +89,16 @@
             <input type="text" name="visa" class="form-control" placeholder="Visa Card" >
             <span class="glyphicon glyphicon-phone form-control-feedback"></span>
         </div>
+        <div class="form-group has-feedback">
+            <input type="text" id="address" name="address" class="form-control" placeholder="العنوان" >
+            <span class="glyphicon glyphicon-home form-control-feedback"></span>
+        </div>
 
+        <div class="form-group has-feedback">
+            <div id="us1" class="form-group has-feedback" style="width:100%; height: 200px;"></div>
+            <input type="hidden" name="long" id="long">
+            <input type="hidden" name="lat" id="lat">
+        </div>
 
 
       <div class="row">

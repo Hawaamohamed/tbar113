@@ -20,7 +20,7 @@ class CreateImagesTable extends Migration
           $table->string('type',255);
           $table->integer('userid');
           $table->integer('charityid');
-          $table->integer('postid');
+          $table->integer('postid')->references('id')->on('posts');
           $table->timestamps();
 
         });

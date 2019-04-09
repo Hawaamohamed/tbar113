@@ -1,6 +1,6 @@
 <?php
 /**************************  Update Data charity ***************************/
-Route::get('update_ch/{id?}','UpdataDataCharity@show');
+Route::get('update_ch/{id?}','UpdataDataCharity@show')->name('update_ch');
 Route::post('updateData','UpdataDataCharity@update');
 /**************************  *********************** ***********************/
 Route::get('/home', function()
@@ -53,7 +53,18 @@ Route::get('/', function () {
     return view('home');
 });
 //Added By Hawaa
+//Charity posts
 // Upload images With Ajax
-//Route::get('/profile', 'photosController@index');
-Route::post('/profile/store', 'photosController@store')->name('ajaxupload.store');
-Route::post('/profile/update', 'photosController@store')->name('ajaxupload.update');
+//route::resource("profile","postsController");
+//Route::post('/updateImg', 'photosController@update')->name('ajaxupload.update');
+Route::post('/charity/login/updateProfile', 'photosController@update_profile');
+Route::post('/charity/login/updateCover', 'photosController@update_cover');
+
+
+Route::post('/charity/login/addPost', 'postsController@store');
+Route::post('/charity/login/deletePost', 'postsController@destroy');
+Route::get('/charity/login/editPost/{id}','postsController@edit');
+Route::post('/updatePost/{id}','postsController@update')->name("updatePost");
+
+
+Route::get('/profile/{id}', 'postsController@show')->name("show");

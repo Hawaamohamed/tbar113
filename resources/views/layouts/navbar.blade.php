@@ -40,6 +40,13 @@
 		<script src="{{ url("/design/colo/js/jquery-3.3.1.min.js") }}"></script>
 		<script src="{{ url("/design/colo/js/jquery-3.2.1.min.js") }}"></script>
 		<script src="{{ url("/design/colo/css/bootstrap4/popper.js") }}"></script>
+
+		<link rel="stylesheet" href="{{ url("/design/colo/css/core-style.css") }}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 	<script>
 	$(document).ready(function(){
 		$("<i class='fa fa-search'></i>").insertBefore(".search");
@@ -126,7 +133,7 @@
 		</style>
 </head>
 
-<body>
+<body class="">
 
 <div class="super_container">
 
@@ -151,7 +158,7 @@
 							<ul class="navbar_menu">
 								<li>
 								 <div>
-									<input type="email" class="form-control search" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 34px 0 3px;border-radius: 0;" placeholder="... بحث">
+									<input type="email" class="form-control search" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 34px 0 3px;border-radius: 0;height: 34px;" placeholder="... بحث">
 								 </div>
 								</li>
 								<li><a href="{{url('/about_us')}}" class='about_us'>من نحن</a></li>
