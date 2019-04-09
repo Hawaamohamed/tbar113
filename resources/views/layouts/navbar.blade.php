@@ -37,15 +37,93 @@
 		<link rel="stylesheet" href="{{ url("/design/colo/css/core-style.css") }}">
 
 
-
+		<script src="{{ url("/design/colo/js/jquery-3.3.1.min.js") }}"></script>
+		<script src="{{ url("/design/colo/js/jquery-3.2.1.min.js") }}"></script>
+		<script src="{{ url("/design/colo/css/bootstrap4/popper.js") }}"></script>
 	<script>
-		function test()
+	$(document).ready(function(){
+		$("<i class='fa fa-search'></i>").insertBefore(".search");
+		$(".fa-search").parent('div').css('position','relative');
+	$(".fa-search").css({
+		'position':'absolute',
+		'color':'white',
+		'top':'1px',
+		'width':'30px',
+		'height':'32px',
+		'background':'#28b8b9',
+		'padding':'10px 7px 3px 3px',
+		'cursor':'pointer',
+		'border-right': 'none',
+		'font-size': '16px',
+		//'right':$(this).parent('div').find(':input').innerWidth()
+	  'right':$(this).parent('div').find(':input').innerWidth()-($(this).parent().find(':input').innerWidth())
+	});
+
+
+		if(window.location=='http://localhost/tbar3/public/home')
 		{
-			alert("search") ;
+		  $(".navbar li a.home").css({
+				'color':'white',
+				'background':'rgb(40, 184, 185)',
+				'transition':'all .2s ease-in-out'
+			})
+		}else if(window.location=='http://localhost/tbar3/public/persons')
+		{
+		  $(".navbar li a.persons").css({
+				'color':'white',
+				'background':'rgb(40, 184, 185)',
+				'transition':'all .2s ease-in-out'
+			})
+		}else if(window.location=='http://localhost/tbar3/public/login')
+		{
+		  $(".navbar li a.login").css({
+				'color':'white',
+				'background':'rgb(40, 184, 185)',
+				'transition':'all .2s ease-in-out'
+			})
+		}else if(window.location=='http://localhost/tbar3/public/register')
+		{
+		  $(".navbar li a.register").css({
+				'color':'white',
+				'background':'rgb(40, 184, 185)',
+				'transition':'all .2s ease-in-out'
+			})
+		}else if(window.location=='http://localhost/tbar3/public/charity_register')
+		{
+		  $(".navbar li a.charity_register").css({
+				'color':'white',
+				'background':'rgb(40, 184, 185)',
+				'transition':'all .2s ease-in-out'
+			})
+		}else if(window.location=='http://localhost/tbar3/public/about_us')
+		{
+		  $(".navbar li a.about_us").css({
+				'color':'white',
+				'background':'rgb(40, 184, 185)',
+				'transition':'all .2s ease-in-out'
+			})
 		}
+		$(".navbar li a").hover(function(event){
+	    // event.preventDefault();
+		$(this).addClass('active').parent().siblings().find('a').removeClass('active');
+	    });
+	});
 	</script>
+		<script>
+			function test()
+			{
+				alert("search") ;
+			}
+		</script>
+		<style>
+     .active{
+			 color:rgb(40, 184, 185);
+			 width:100%;
+			 background:;
+			 transition:all .2s ease-in-out;
+		 }
 
-
+		</style>
 </head>
 
 <body>
@@ -72,15 +150,16 @@
 
 							<ul class="navbar_menu">
 								<li>
-									<i onclick="test()" class="fa fa-search" style="right:160px;cursor: pointer"></i>
-									<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px" placeholder="... بحث">
+								 <div>
+									<input type="email" class="form-control search" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 34px 0 3px;border-radius: 0;" placeholder="... بحث">
+								 </div>
 								</li>
-								<li><a href="{{url('/about_us')}}">من نحن</a></li>
-								<li><a href="{{url('/register_charity')}}">أنضم كجمعية</a></li>
-								<li><a href="{{url('/register')}}">أنضم كمتبرع</a></li>
-								<li><a href="{{url('/login')}}">تسجيل الدخول</a></li>
-								<li><a href="{{url('/persons')}}">الحالات</a></li>
-								<li><a href="{{url('/home')}}">الرئيسية</a></li>
+								<li><a href="{{url('/about_us')}}" class='about_us'>من نحن</a></li>
+								<li><a href="{{url('/register_charity')}}" class='charity_register'>أنضم كجمعية</a></li>
+								<li><a href="{{url('/register')}}" class='register'>أنضم كمتبرع</a></li>
+								<li><a href="{{url('/login')}}" class='login'>تسجيل الدخول</a></li>
+								<li><a href="{{url('/persons')}}" class='persons'>الحالات</a></li>
+								<li><a href="{{url('/home')}}" class='home'>الرئيسية</a></li>
 							</ul>
 
 							<div class="hamburger_container">
@@ -105,9 +184,10 @@
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/register')}}">أنضم كمتبرع</a></li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/register_charity')}}">أنضم كجمعية</a></li>
 				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;"><a href="{{url('/about_us')}}">من نحن</a></li>
-				<li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;margin-bottom: 100px">
-					<i onclick="test()" class="fa fa-search" style="right:160px;cursor: pointer"></i>
-					<input type="email" class="form-control" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 5px 0 40px;margin-bottom: 10px;" placeholder="... بحث">
+			  <li style="padding-right:10px;margin: 10px 0px;border-bottom: 1px solid #ccc;margin-bottom: 100px">
+				<div>
+				  <input type="email" class="form-control search" style="color: darkcyan;font-family: Calibri , arial;font-size: 15px ; display: inline; width: 200px;text-align: right;padding: 0 34px 0 40px;margin-bottom: 10px;" placeholder="... بحث">
+        </div>
 				</li>
 			</ul>
 

@@ -1,6 +1,8 @@
 <?php
-
-
+/**************************  Update Data charity ***************************/
+Route::get('update_ch/{id?}','UpdataDataCharity@show');
+Route::post('updateData','UpdataDataCharity@update');
+/**************************  *********************** ***********************/
 Route::get('/home', function()
 {
     return view('home') ;
@@ -15,7 +17,8 @@ Route::get('/register', function()
 {
     return view('/login_register/register') ;
 });
-
+Route::post('charity/register','CharityController@register');
+Route::post('charity/login','CharityController@login');
 Route::get('/register_charity', function()
 {
     return view('/login_register/register_charity') ;
@@ -51,6 +54,6 @@ Route::get('/', function () {
 });
 //Added By Hawaa
 // Upload images With Ajax
-Route::get('/profile', 'photosController@index');
+//Route::get('/profile', 'photosController@index');
 Route::post('/profile/store', 'photosController@store')->name('ajaxupload.store');
 Route::post('/profile/update', 'photosController@store')->name('ajaxupload.update');

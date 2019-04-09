@@ -65,10 +65,10 @@
 
 .login-box-body .form-control-feedback, .register-box-body .form-control-feedback
 {
-    color: lightseagreen ;
+    /*color: lightseagreen ;*/
 }
 
-a 
+a
 {
     color: lightseagreen ;
 }
