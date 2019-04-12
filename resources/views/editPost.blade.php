@@ -109,7 +109,7 @@ body{
 <script>
 $(".fa-times").on('click',function(){
 var imgId=$(this).siblings("#imgId").val();
-$(this).css("display","none").siblings('a').addClass('hidden');
+$(this).css("display","none").siblings('a').parent().addClass('hidden');
 var imagesId=$("#imagesId").attr('value');
 var totalImagesId=$("#imagesId").val(imagesId+','+imgId);
 })
