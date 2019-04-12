@@ -148,10 +148,5 @@ class photosController extends Controller
         }
    }
 
-  public function deleteImg($id)
-  {
-    $imgId=$request('imgId');
-    return back();
-  }
 
 }
