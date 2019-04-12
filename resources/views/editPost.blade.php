@@ -8,7 +8,7 @@
 .file-footer-caption,.file-caption-main .file-caption,i.glyphicon-plus-sign,.file-drop-zone-title{
 	display:none;
 }
-button.fileinput-upload-button{
+button.fileinput-upload-button,button.fileinput-remove-button,button.fileinput-cancel-button{
 	display: none;
 }
 .input-group-append{
@@ -31,6 +31,7 @@ button.fileinput-upload-button{
  .modal {
 		background: none;
 }
+
 body{
 	background: #ece6e6;
 }
@@ -66,11 +67,14 @@ body{
            @foreach($post->images as $image)
            <div class=" edit_images">
            <div class="col-sm-4">
+						 <input type="hidden" id="imgId" name="imgId" value="{{$image->id}}">
+						 <i class="fa fa-times"></i>
              <a href="{{asset('images/'.$image->image)}}" tabindex='-1' class='downfile'><img src="{{asset('images/'.$image->image)}}" class="img-responsive old_image"></a>
            </div>
          </div>
           @endforeach
         @endif
+				<input type="hidden" name="imagesId" id="imagesId" value="">
      </div>
 		 <div class='col-sm-12'>
 			 <!--Plugin inputfile-->
@@ -102,5 +106,14 @@ body{
 <script src="{{ url("/design/colo/themes/fa/theme.js") }}"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+$(".fa-times").on('click',function(){
+var imgId=$(this).siblings("#imgId").val();
+$(this).css("display","none").siblings('a').addClass('hidden');
+var imagesId=$("#imagesId").attr('value');
+var totalImagesId=$("#imagesId").val(imagesId+','+imgId);
+})
 
+
+</script>
 @endsection

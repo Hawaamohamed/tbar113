@@ -56,6 +56,7 @@ class UpdataDataCharity extends Controller
       }
       Charity::where('id',$id)->update($data);
       session()->flash('update','تم تعديل بيانات الجمعيه بنجاح');
-      return view('profile',['id'=>$id]);
+      //return view('profile',['id'=>$id]);
+      return back();
   }
 }

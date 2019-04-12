@@ -57,14 +57,14 @@ Route::get('/', function () {
 // Upload images With Ajax
 //route::resource("profile","postsController");
 //Route::post('/updateImg', 'photosController@update')->name('ajaxupload.update');
-Route::post('/charity/login/updateProfile', 'photosController@update_profile');
-Route::post('/charity/login/updateCover', 'photosController@update_cover');
+Route::post('/profile/updateProfile', 'photosController@update_profile');
+Route::post('/profile/updateCover', 'photosController@update_cover');
 
 
-Route::post('/charity/login/addPost', 'postsController@store');
-Route::post('/charity/login/deletePost', 'postsController@destroy');
-Route::get('/charity/login/editPost/{id}','postsController@edit');
+Route::post('/profile/addPost', 'postsController@store');
+Route::post('/profile/deletePost', 'postsController@destroy');
+Route::get('/profile/editPost/{id}','postsController@edit');
 Route::post('/updatePost/{id}','postsController@update')->name("updatePost");
-
-
 Route::get('/profile/{id}', 'postsController@show')->name("show");
+
+Route::post('/deleteImg', 'photosController@deleteImg')->name('deleteImg');

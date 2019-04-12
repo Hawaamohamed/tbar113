@@ -60,9 +60,8 @@ class postsController extends Controller
         $posts_table->payment = 0;
         $posts_table->save();
 
-        $img_table='';
         $last_row=DB::table('posts')->where('charity_id',$ch_id)->orderBy('id', 'DESC')->first();
-
+        $arr='';
         if($request->file('file'))
         {
           $images = $request->file('file');
@@ -70,6 +69,9 @@ class postsController extends Controller
           'file.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2024'
          ]);
 
+          global $arr;
+          $arr=array();
+          $i=0;
           foreach($images as $image)
           {
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -82,14 +84,15 @@ class postsController extends Controller
             $img_table->charityid = $ch_id;
             $img_table->postid = $last_row->id;
             $img_table->save();
+
+            $arr[]=$new_name;
            }
          }
 
-     //return response(['status'=>true,'data'=>$posts_table]);
      return response()->json([
       'message'   => 'Post Added Successfully',
       'post' => $posts_table,
-      'images'=> $img_table
+      'images'=> $arr
      ]);
    }else{
      return response()->json([
@@ -146,16 +149,23 @@ class postsController extends Controller
       $post->payment = 0;
       $post->save();
 
+      $imagesId=$request->input('imagesId');
+      $imagesIds = explode(',',$imagesId);
+      for($i=0;$i<count($imagesIds);$i++)
+      {
+        if($imagesIds[$i] != '')
+        {
+          $intId=(int)$imagesIds[$i];
+          $image = Images::find($intId);
+          unlink(public_path() .  '/images/' . $image->image );
+          $image->delete();
+       }
+     }
+
       $new_images = $request->file('file');
       if(!empty($new_images))
       {
-        $old_images = DB::table('images')->where('postid',$id)->orderBy('id')->get();
-        foreach($old_images as $image)
-        {
-          unlink(public_path() .  '/images/' . $image->image );
-          $img=Images::find($image->id);
-          $img->delete();
-        }
+        
         $validation = Validator::make($request->all(), [
         'file.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2024'
        ]);

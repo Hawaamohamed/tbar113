@@ -78,7 +78,10 @@ class photosController extends Controller
           ]);
           if($validation->passes())
           {
-            unlink(public_path() .  '/avatar/' . $charity->profile );
+            if($charity->profile != 'pro.jpg')
+            {
+              unlink(public_path() .  '/avatar/' . $charity->profile );
+            }
 
            $image = $request->file('select_file');
            $new_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -117,7 +120,10 @@ class photosController extends Controller
         ]);
         if($validation->passes())
         {
-         unlink(public_path() .  '/avatar/' . $charity->cover );
+          if($charity->cover != 'cover.jpg')
+          {
+           unlink(public_path() .  '/avatar/' . $charity->cover );
+          }
          $image = $request->file('select_file');
          $new_name = rand() . '.' . $image->getClientOriginalExtension();
          $image->move(public_path('avatar'), $new_name);
@@ -142,6 +148,10 @@ class photosController extends Controller
         }
    }
 
-
+  public function deleteImg($id)
+  {
+    $imgId=$request('imgId');
+    return back();
+  }
 
 }

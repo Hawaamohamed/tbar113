@@ -9,7 +9,7 @@
 .file-footer-caption,.file-caption-main .file-caption,i.glyphicon-plus-sign,.file-drop-zone-title{
 	display:none;
 }
-button.fileinput-upload-button{
+button.fileinput-upload-button,button.kv-file-zoom{
 	display: none;
 }
 .input-group-append{
@@ -32,13 +32,10 @@ button.fileinput-upload-button{
  .modal {
 		background: none;
 }
-.dropdown-menu ul li:hover{
+.dropdown-menu button:hover{
 	background: #ddd;
 	width:100%;
-	margin:2px;
-	padding:2px;
 }
-
 </style>
 <div style="background: #e2e4e6;margin-top:50px;min-height:474px;">
 
@@ -49,7 +46,7 @@ button.fileinput-upload-button{
      <div class="cover-img clearfix">
        <div class="alert" id="message_cover" style="display: none"></div>
          <div class="hover-content" style="border-radius: 0;width: 100%; margin: 0;right: 0;left: 0;">
-         <form method="post" id="upload_form_cover" action="{{url('/charity/login/updateCover')}}" enctype="multipart/form-data" style="position:absolute;margin-top: 18%;margin-left: 50%;">
+         <form method="post" id="upload_form_cover" action="{{url('/profile/updateCover')}}" enctype="multipart/form-data" style="position:absolute;margin-top: 18%;margin-left: 50%;">
             {{ csrf_field() }}
           <label class="btn" id="upload_img">
               <i class="fa fa-camera" style="font-size: 18px;"></i><input type="file" name="select_file" id="select_file_cover" style="display: none;">
@@ -73,7 +70,7 @@ button.fileinput-upload-button{
 		     </div>
               <div class="hover-content">
                 <div class="alert" id="message_profile" style="display: none"></div>
-                <form method="post" id="upload_form_profile" action="{{url('/charity/login/updateProfile')}}" enctype="multipart/form-data">
+                <form method="post" id="upload_form_profile" action="{{url('/profile/updateProfile')}}" enctype="multipart/form-data">
                    {{ csrf_field() }}
                  <label class="btn" id="upload_img_profile">
                      <span class='edit' style=""></span> <i class="fa fa-camera" style="font-size: 20px;color: white;"></i><input type="file" name="select_file" id="select_file_profile" style="display: none;">
@@ -112,7 +109,7 @@ button.fileinput-upload-button{
 			<div class="alert_error alert alert-danger hidden"><h3></h3><ul></ul></div>
       <section class="post newPost">
         <div class="panel panel-default" dir='ltr'>
-         <form method="POST" action="{{url('/charity/login/addPost')}}" id="newPost" enctype="multipart/form-data">
+         <form method="POST" action="{{url('/profile/addPost')}}" id="newPost" enctype="multipart/form-data">
 					 <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="panel-body">
                <input type="hidden" name="ch_id" value="{{Session('charity.charity_id')}}">
@@ -152,7 +149,7 @@ button.fileinput-upload-button{
        </div>
     </section>
    <!--*************************Hidden panel***********-->
-
+<section class="hiddenPost">
 	 <div class="panel panel-default hidden" dir='ltr' id="appendnewPost">
 		 <div class="panel-body">
 			 <div class="head" style="margin-top: 20px">
@@ -197,6 +194,7 @@ button.fileinput-upload-button{
 		 </div>
 	 </div>
 	</div>
+</section>
 	 <!--***************end hidden panel*****************-->
 
 		<!--************** Old Posts ************* -->
@@ -224,15 +222,14 @@ button.fileinput-upload-button{
 								 ?>
 							 </span>
 						</div>
+
 						<div class="dropdown list">
 						<button class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background:white;border:none;border-radius:;color:#333;width: 100%;padding:2px">
 						 <i class="fa fa-ellipsis-h pull-right" style="margin-right: 5px;cursor:pointer"></i>
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="font-size:12px;padding:7px;">
-						 <ul>
-							<li style='cursor:pointer;text-align:center'><a href="{{url('/charity/login/editPost/'.$post->id)}}" id="{{$post->id}}" style="color: #333;font-weight: 400">Edit</a><li>
-							<li style='cursor:pointer;text-align:center'><span aria-hidden="true" href="#myModal2" data-id="" class="delete" data-toggle="modal" data-toggle="modal" id="{{$post->id}}">Delete<li>
-						 </ul>
+							<button class="dropdown-item text-center" type="button"><a href="{{url('/profile/editPost/'.$post->id)}}" id="{{$post->id}}" style="color: #333;font-weight: 400">Edit</a></button>
+							<button class="dropdown-item text-center" type="button"><span aria-hidden="true" href="#myModal2" data-id="" class="delete" data-toggle="modal" data-toggle="modal" id="{{$post->id}}">Delete</span></button>
 						</div>
 						</div>
 
@@ -280,7 +277,7 @@ button.fileinput-upload-button{
  		                      </div>
  		                      <div class="modal-footer" style="justify-content: flex-start;border-top:none;margin-top:16px;">
  		                        <div style="margin: 2px auto;">
- 															<form method="post" id="deletePost" action="{{url('/charity/login/deletePost')}}">
+ 															<form method="post" id="deletePost" action="{{url('/profile/deletePost')}}">
  															  	{{csrf_field()}}
 																	<input type="hidden" class="pid" id="pid" name="pid" value="">
  		                           <button type="submit" id="delete" class="btn btn-primary" id="delete" data-dismiss="modal" value="">نعم</button>
@@ -311,8 +308,6 @@ button.fileinput-upload-button{
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="{{ url("/design/colo/js/fileinput.js") }}"></script>
 <script src="{{ url("/design/colo/themes/fa/theme.js") }}"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
 
 <script>
 $(document).ready(function(){
@@ -320,7 +315,9 @@ $(document).ready(function(){
 $('#newPost').on('submit', function(event){
 event.preventDefault();
 	var url = $("#newPost").attr('action');
+	var thiss=$(this);
 
+  j=0;
   $.ajax({
    url:url,
    method:"POST",
@@ -332,11 +329,20 @@ event.preventDefault();
    success:function(data)
    {
 		  $("#newPost")[0].reset();
-			$("#appendnewPost").removeClass("hidden");
-			$("#appendnewPost #story").append(data.post.story);
-			if(data.images.image != ''){
-		  $("#appendnewPost #images").append("<img src='/images/"+data.images.image+"' class='img-responsive' style='width:100%'>");
-		  }
+			//$("#appendnewPost").removeClass("hidden");
+
+			$("#appendnewPost").clone().prependTo(".hiddenPost");
+			var hiddenpost = thiss.parent().parent().siblings(".hiddenPost").children("div:eq(1)");
+			hiddenpost.removeClass("hidden");
+			hiddenpost.children().children().children().children("#story").append(data.post.story);
+
+			if(data.images != ''){
+				for(i=0;i<data.images.length;i++)
+				{
+			   hiddenpost.children().children().children().children("#images").append("<div class='col-sm-4'><img src='/images/"+data.images[i]+"' class='img-responsive' style='width:100%'></div>");
+		  	}
+			}
+
 	},
 	error:function(data_error,exception){
 
@@ -357,7 +363,6 @@ event.preventDefault();
 // Profile Image
  $('#upload_form_profile').on('change', function(event){
   event.preventDefault();
-	//var form = $("#upload_form_profile").serialize();
 	var url = $("#upload_form_profile").attr('action');
 
   $.ajax({
@@ -388,8 +393,6 @@ event.preventDefault();
 // Cover Image
  $('#upload_form_cover').on('change', function(event){
 	 event.preventDefault();
-
- 	var form = $("#upload_form_cover").serialize();
  	var url = $("#upload_form_cover").attr('action');
 
    $.ajax({
@@ -415,12 +418,12 @@ event.preventDefault();
   });
 
  // Delete post
- $('.dropdown-menu ul li span.delete').click(function(event)
+ $('.dropdown-menu button span.delete').click(function(event)
  {
 	 event.preventDefault();
       var postid = $(this).attr('id');
       $("#pid").attr('value',postid);
-			$thisPost = $(this).parent().parent().parent().parent().parent().parent().parent().parent(".opost");
+			$thisPost = $(this).parent().parent().parent().parent().parent().parent().parent(".opost");
   $('#delete').on('click', function()
 	{
    var url = $("#deletePost").attr('action');
@@ -435,19 +438,9 @@ event.preventDefault();
 			 $thisPost.css("display","none");
     }
    })
-	 //return false;
-
   });
 
  });
-
-
-
-
- //$(".file-preview-image").css("width","600px");
-
-
-
 
 
 });

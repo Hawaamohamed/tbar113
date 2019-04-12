@@ -44,8 +44,9 @@
 	text-align:center ;
 	font-family:Gaegu ;
   position:fixed;bottom:0;
-   width:100%;
-   display:block;
+  width:100%;
+  display:block;
+  z-index: 999;
 }
 .copy-Right h5 {
 	color:#ccc ;
