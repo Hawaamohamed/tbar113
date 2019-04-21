@@ -68,3 +68,7 @@ Route::post('/updatePost/{id}','postsController@update')->name("updatePost");
 Route::get('/profile/{id}', 'postsController@show')->name("show");
 
 Route::post('/deleteImg', 'photosController@deleteImg')->name('deleteImg');
+
+
+//////////////////////////
+Route::get('/persons','personsController@index');

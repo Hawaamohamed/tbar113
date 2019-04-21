@@ -36,6 +36,9 @@ button.fileinput-upload-button,button.kv-file-zoom{
 	background: #ddd;
 	width:100%;
 }
+.fileinput-cancel-button,.close{
+	display:none;
+}
 </style>
 <div style="background: #e2e4e6;margin-top:50px;min-height:474px;">
 

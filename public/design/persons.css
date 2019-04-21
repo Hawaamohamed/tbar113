@@ -211,6 +211,24 @@ h4{
 	margin-top:0;
 	margin: 0;
  }
+ .charity_icon{
+     width: 28px;
+     height: 30px;
+     left: 0;
+     margin-left: 0;
+     position: absolute;
+     color: white;
+     top: 0;
+     left: 0;
+     margin-left: -8%;
+     background: #128282;
+     border-radius: 10px 0 0 10px;
+     cursor: pointer;
+ }
+ #ch_body{
+    height:215px;
+    overflow:auto;
+ }
 
 /**************Media Query***************/
 @media(max-width:720px)
@@ -313,5 +331,30 @@ h4{
  .post .head .name {
      margin-top: -9px;
      margin-right: 0%;
+ }
+}
+
+@media(max-width: 575px)
+{
+  .charity{
+    margin-left: 50%;
+  }
+  .charity_icon{
+    margin-left: -13px;
+  }
+}
+@media (max-width: 720px){
+.panel .panel-footer .donation {
+     margin-top: 0px;
+ }
+ @media(max-width:768px){
+   #ch_body{
+     height:144px;
+   }
+ }
+ @media(min-width:1440px){
+   #ch_body{
+     height:92px;
+   }
  }
 }

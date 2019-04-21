@@ -51,7 +51,8 @@
 	$(document).ready(function(){
 		$("<i class='fa fa-search'></i>").insertBefore(".search");
 		$(".fa-search").parent('div').css('position','relative');
-	$(".fa-search").css({
+	 $(".fa-search").css({
+		'right': '1px',
 		'position':'absolute',
 		'color':'white',
 		'top':'1px',
@@ -63,7 +64,7 @@
 		'border-right': 'none',
 		'font-size': '16px',
 		//'right':$(this).parent('div').find(':input').innerWidth()
-	  'right':$(this).parent('div').find(':input').innerWidth()-($(this).parent().find(':input').innerWidth())
+	  //'right':$(this).parent('div').find(':input').innerWidth()-($(this).parent().find(':input').innerWidth())
 	});
 
 
